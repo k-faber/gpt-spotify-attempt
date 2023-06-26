@@ -1,0 +1,1 @@
+const spotifyAuth = require("./spotifyAuth.js");
