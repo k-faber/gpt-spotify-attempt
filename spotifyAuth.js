@@ -1,15 +1,8 @@
 const clientId = process.env['SPOTIFY_CLIENT_ID']; // Replace with your client ID 
-
-if (!code) {
-    redirectToAuthCodeFlow(clientId);
-} else {
-    const accessToken = await getAccessToken(clientId, code);
-    const profile = await fetchProfile(accessToken);
-    populateUI(profile);
-}
+const code = undefined;
 
 async function redirectToAuthCodeFlow(clientId) {
-    // TODO: Redirect to Spotify authorization page
+  // TODO: Redirect to Spotify authorization page
 }
 
 async function getAccessToken(clientId, code) {
@@ -17,9 +10,19 @@ async function getAccessToken(clientId, code) {
 }
 
 async function fetchProfile(token) {
-    // TODO: Call Web API
+  // TODO: Call Web API
 }
 
 function populateUI(profile) {
-    // TODO: Update UI with profile data
+  // TODO: Update UI with profile data
+}
+
+async function main() {
+  if (!code) {
+    redirectToAuthCodeFlow(clientId);
+  } else {
+    const accessToken = await getAccessToken(clientId, code);
+    const profile = await fetchProfile(accessToken);
+    populateUI(profile);
+  }
 }
