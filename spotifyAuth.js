@@ -1,5 +1,4 @@
-const clientId = process.env['SPOTIFY_CLIENT_ID']; // Replace with your client ID
-const code = undefined;
+const clientId = process.env['SPOTIFY_CLIENT_ID']; // Replace with your client ID 
 
 if (!code) {
     redirectToAuthCodeFlow(clientId);
