@@ -50,12 +50,13 @@ app.get('/top-tracks', async (req, res) => {
       artist: track.artists.map((artist) => artist.name),
       album: track.album.name,
     }));
-    console.log(tracks);
+    const stringTracks = JSON.stringify(tracks);
+    console.log(stringTracks);
 
     // setup chatGPT integration through intellinode (can be changed to different library)
     const chatbot = new Chatbot(process.env.OPENAI_API_KEY, 'openai');
-    const prompt = new ChatGPTInput('Summarize my top tracks that I will paste at the end of this prompt. Also ' +
-                                    'make a list of 10 songs similar to these songs.\n' + tracks);
+    const prompt = new ChatGPTInput('Every response that you give, I want you to format so that it displays well on an HTML page. Make sure that each song is on its own line. Summarize my top tracks that I will paste at the end of this prompt.' +   
+                                    stringTracks + 'After doing that, make me a new list of ten similar but different songs and write them down. Then, make another new list of both of these lists shuffled.');
     const responses = await chatbot.chat(prompt);
 
     res.send(`
@@ -63,6 +64,9 @@ app.get('/top-tracks', async (req, res) => {
     <!DOCTYPE html>
 
     <html>
+      <head>
+        <title>Spotify GPT result</title>
+      </head>
       <body>
         <p>"${responses}"</p>
       </body>
@@ -83,6 +87,9 @@ app.get('/', (req, res) => {
   const html = `
     <!DOCTYPE html>
     <html>
+      <head>
+        <title>Spotify GPT Experiment</title>
+      </head>
       <body>
         <h1>Welcome to this experiment<h1>
         <p>Please log in with Spotify:</p>
