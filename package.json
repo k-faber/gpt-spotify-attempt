@@ -2,7 +2,7 @@
   "name": "gpt-spotify-attempt",
   "version": "1.0.0",
   "description": "Attempt at a Spotify playlist creator using ChatGPT",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,8 @@
     "axios": "^1.4.0",
     "chatgpt": "^5.2.5",
     "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "intellinode": "^1.0.0",
     "node-fetch": "^3.2.6",
     "spotify-web-api-node": "^5.0.2"
   }
